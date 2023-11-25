@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
+import model.Usuario;
 
 
 public class TelaDeLogin extends JFrame{
@@ -70,6 +71,7 @@ public class TelaDeLogin extends JFrame{
         govButton.setForeground(Color.WHITE);
         panel.add(govButton);
         
+        Usuario usuario = new Usuario();
     
         loginButton.addActionListener(new ActionListener() {
             @Override
@@ -80,7 +82,7 @@ public class TelaDeLogin extends JFrame{
                 if (username.isEmpty() || password.length == 0){
                 JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
             }
-                if (username.equals("usuario") && String.valueOf(password).equals("senha")) {
+                if (username.equals(usuario.getNome()) && String.valueOf(password).equals(usuario.getSenha())) {
                     JOptionPane.showMessageDialog(frame, "Login bem-sucedido!");
                     frame.dispose();
                     TelaPrincipalUsuario telausuario = new TelaPrincipalUsuario();
@@ -104,7 +106,8 @@ public class TelaDeLogin extends JFrame{
         registerButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-               RegistroJanela cadastro = new RegistroJanela();        
+               
+               RegistroJanela cadastro = new RegistroJanela(usuario);        
         }
         });
         

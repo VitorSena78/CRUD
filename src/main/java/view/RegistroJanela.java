@@ -15,9 +15,10 @@ import java.time.ZoneId;
 import java.text.SimpleDateFormat;
 
 public class RegistroJanela extends JFrame{ 
-   public RegistroJanela(){
-          
+   private Usuario usuario;
+   public RegistroJanela(Usuario usuario){  
         super("Janela de Cadastro");
+        this.usuario = usuario;
         setSize(400, 400);
         
         JPanel panel = new JPanel();
@@ -165,7 +166,7 @@ public class RegistroJanela extends JFrame{
                 return;
             }
             //variaveis para usar no DAO
-            Usuario usuario = new Usuario();
+           // Usuario usuario = new Usuario();
             usuario.setNome(nomeUser);
             usuario.setSenha(new String(senha_U));
             usuario.setEmail(emailUser);
