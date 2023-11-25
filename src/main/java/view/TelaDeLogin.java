@@ -81,7 +81,7 @@ public class TelaDeLogin extends JFrame{
                 // Faça a validação aqui (substitua isso pela lógica real de autenticação)
                 if (username.isEmpty() || password.length == 0){
                 JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
-            }
+            }else{
                 if (username.equals(usuario.getNome()) && String.valueOf(password).equals(usuario.getSenha())) {
                     JOptionPane.showMessageDialog(frame, "Login bem-sucedido!");
                     frame.dispose();
@@ -92,7 +92,7 @@ public class TelaDeLogin extends JFrame{
                 }
                 usernameField.setText("");
                 passwordField.setText("");
-               
+                }
             }
         });
         
