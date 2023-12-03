@@ -34,6 +34,14 @@ public class Usuario {
         this.idade = idade;
         this.email = email;
     }
+    
+    public Usuario(String nomeUsuario, String email, String senha, int id) {
+        this.nome = nomeUsuario;
+        this.email = email;
+        this.senha = senha;
+        this.id = id;
+
+    }
 
     public int getIdade() {
         return idade;

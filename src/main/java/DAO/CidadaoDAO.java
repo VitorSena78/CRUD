@@ -81,15 +81,19 @@ public class CidadaoDAO implements CrudDAO {
     }
 
     public boolean alterar(@NotNull Cidadao cidadao) {
-        String sql = "UPDATE Tbl_Cidadao SET nome=?, dt_nascimento=?, email=?, senha=? WHERE id=?";
+        String sql = "UPDATE Tbl_Cidadao SET nome=?, email=?, senha=? WHERE id_Cidadao=?";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1,cidadao.getNome());
-            stmt.setString(2,cidadao.getData_nascimento());
-            stmt.setString(3,cidadao.getEmail());
-            stmt.setString(4,cidadao.getSenha());
-            stmt.setInt(5, cidadao.getId());
+            stmt.setString(2,cidadao.getEmail());
+            stmt.setString(3,cidadao.getSenha());
+            stmt.setInt(4, cidadao.getId());
             stmt.execute();
+            System.out.println(cidadao.getNome());
+            System.out.println(cidadao.getEmail());
+            System.out.println(cidadao.getSenha());
+            System.out.println(cidadao.getId());
+            System.out.println("usuário alterado!");
             return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);

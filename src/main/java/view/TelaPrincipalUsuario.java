@@ -41,8 +41,6 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        System.out.println("nome de usuario tela de principal2: " + cidadao.getNome());
-
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
@@ -51,6 +49,7 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
         denunciasButton = new javax.swing.JMenu();
         cadDenunciaButton = new javax.swing.JMenuItem();
         conDenunciaButton = new javax.swing.JMenuItem();
+        conAllDenuncias = new javax.swing.JMenuItem();
         profileButton = new javax.swing.JMenu();
         editProfileButton = new javax.swing.JMenuItem();
         quitButton = new javax.swing.JMenuItem();
@@ -64,12 +63,17 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
         setTitle("Se liga, cidadão!");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Seja Bem-Vindo(a) " + this.cidadao.getNome() + " ao Se liga, Cidadão!");
+        jLabel1.setText("Seja Bem-Vindo(a) ao Se liga, Cidadão!");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Para utilizar as funções utilize os menus no canto superior esquerdo.");
 
-        denunciasButton.setText("Minhas denúncias");
+        denunciasButton.setText("Denúncias");
+        denunciasButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                denunciasButtonActionPerformed(evt);
+            }
+        });
 
         cadDenunciaButton.setText("Cadastrar Nova denúncia");
         cadDenunciaButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +90,14 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
             }
         });
         denunciasButton.add(conDenunciaButton);
+
+        conAllDenuncias.setText("Visualizar todas as denúncias");
+        conAllDenuncias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                conAllDenunciasActionPerformed(evt);
+            }
+        });
+        denunciasButton.add(conAllDenuncias);
 
         jMenuBar1.add(denunciasButton);
 
@@ -179,8 +191,9 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
 
     private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
         // TODO add your handling code here:
-        TelaPerfilU telaperfil = new TelaPerfilU(cidadao);
+        TelaPerfilU telaperfil = new TelaPerfilU(this.cidadao);
         telaperfil.setVisible(true);
+        System.out.println("TESTE");
     }//GEN-LAST:event_editProfileButtonActionPerformed
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
@@ -188,6 +201,17 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
         this.dispose();
         TelaDeLogin telalogin = new TelaDeLogin();
     }//GEN-LAST:event_quitButtonActionPerformed
+
+    private void denunciasButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_denunciasButtonActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_denunciasButtonActionPerformed
+
+    private void conAllDenunciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conAllDenunciasActionPerformed
+        // TODO add your handling code here:
+        TelaConsultarTodasDenuncias telaconAll = new TelaConsultarTodasDenuncias();
+        telaconAll.setVisible(true);
+    }//GEN-LAST:event_conAllDenunciasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +251,7 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cadDenunciaButton;
+    private javax.swing.JMenuItem conAllDenuncias;
     private javax.swing.JMenuItem conDenunciaButton;
     private javax.swing.JMenu denunciasButton;
     private javax.swing.JMenuItem editProfileButton;
