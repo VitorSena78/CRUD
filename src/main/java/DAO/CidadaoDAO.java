@@ -3,23 +3,26 @@ package DAO;
 import model.Cidadao;
 import org.jetbrains.annotations.NotNull;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CidadaoDAO extends UsuarioDAO {
+public class CidadaoDAO implements CrudDAO {
+
+    private Connection connection;
 
     public CidadaoDAO() {
-        super.setConnection(Conexao.getconection());
+        this.connection = Conexao.getconection();
     }
 
     public List<Cidadao> listar() {
         String sql = "SELECT * FROM Tbl_Cidadao";
         List<Cidadao> cidadaoDb = new ArrayList<>();
         try {
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()){
                 Cidadao cidadao = new Cidadao();
@@ -41,7 +44,7 @@ public class CidadaoDAO extends UsuarioDAO {
         Cidadao cidadaoDb = new Cidadao();
         boolean encontrou = false;
         try {
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1, nome);
             stmt.setString(2, senha);
             ResultSet resultSet = stmt.executeQuery();
@@ -53,19 +56,19 @@ public class CidadaoDAO extends UsuarioDAO {
                 cidadaoDb.setData_nascimento(String.valueOf(resultSet.getDate("dt_nascimento")));
                 System.out.println("login bem sucedido");
             } else  {
-                System.out.println("erro ao registrar cidadão do banco de dados");
+                System.out.println("erro ao consultar cidadão do banco de dados");
             }
         } catch (SQLException e) {
             System.out.println("erro ao consultar no banco de dados");
             throw new RuntimeException(e);
         }
-        return encontrou ? cidadaoDb: null;
+        return cidadaoDb;
     }
 
     public boolean inserir(@NotNull Cidadao cidadao) {
         String sql = "INSERT INTO Tbl_Cidadao(nome, dt_nascimento, email, senha) VALUES(?, ?, ?, ?)";
         try {
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1, cidadao.getNome());
             stmt.setString(2, cidadao.getData_nascimento());
             stmt.setString(3, cidadao.getEmail());
@@ -80,11 +83,11 @@ public class CidadaoDAO extends UsuarioDAO {
     public boolean alterar(@NotNull Cidadao cidadao) {
         String sql = "UPDATE Tbl_Cidadao SET nome=?, dt_nascimento=?, email=?, senha=? WHERE id=?";
         try {
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1,cidadao.getNome());stmt.setString(2,cidadao.getData_nascimento());
             stmt.setString(3,cidadao.getEmail());
             stmt.setString(4,cidadao.getSenha());
-            stmt.setInt(5,cidadao.getId());
+            stmt.setInt(5, cidadao.getId());
             stmt.execute();
             return true;
         } catch (SQLException e) {
@@ -94,10 +97,15 @@ public class CidadaoDAO extends UsuarioDAO {
     }
 
     @Override
+    public boolean pesquisar(int id) {
+        return false;
+    }
+
+    @Override
     public boolean remover(int id) {
         String sql = "DELETE FROM Tbl_Cidadao Where id_Cidadao=?";
         try {
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setInt(1, id);
             stmt.execute();
             System.out.println("usuário apagada!");
@@ -107,5 +115,10 @@ public class CidadaoDAO extends UsuarioDAO {
 
         }
 
+    }
+
+    @Override
+    public Connection getConnection() {
+        return this.connection;
     }
 }
