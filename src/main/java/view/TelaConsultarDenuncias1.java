@@ -234,10 +234,10 @@ public class TelaConsultarDenuncias1 extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) this.jTableDenuncias.getModel();
         model.setNumRows(0);
 
-        List<Denuncia> lista = new ArrayList<>();
-        lista = denuncia.getLista();
+        DenunciaService denunciaService = new DenunciaService();
+        List<Denuncia> listaMinhasDenuncias = denunciaService.listarDenuncia();
 
-        for (Denuncia d : lista) {
+        for (Denuncia d : listaMinhasDenuncias) {
             model.addRow(new Object[]{
                     d.getId(),
                     d.getLocalizacaoC(),

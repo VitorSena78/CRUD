@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-    private static final String url = "jdbc:mysql://localhost:3306/a3_psc";
+    private static final String url = "jdbc:mysql://localhost:3306/a3_db";
     private static final String username = "root";
-    private static final String password = "root";
+    private static final String password = "";
 
     private static Connection conn;
 

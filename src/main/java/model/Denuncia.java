@@ -36,6 +36,14 @@ public class Denuncia {
         this.comp = comp;
     }
 
+    public Denuncia(String descricao, String rua, String bairro, String comp, int cidadaoId) {
+        this.descricao = descricao;
+        this.rua = rua;
+        this.bairro = bairro;
+        this.comp = comp;
+        this.cidadaoId = cidadaoId;
+    }
+
 
     public Denuncia(int id, String descricao, String localizacao) {
         this.id = id;
@@ -48,7 +56,6 @@ public class Denuncia {
         this.rua = rua;
         this.comp = comp;
         this.descricao = descricao;
-
         return true;
     }
 
@@ -169,7 +176,6 @@ public class Denuncia {
     public List<Denuncia> getLista() {
         DenunciaService denunciaService = new DenunciaService();
         List<Denuncia> listaDenuncia = denunciaService.listarDenuncia();
-
         return listaDenuncia;
     }
 }

@@ -1,7 +1,10 @@
 package controller;
 
 import DAO.DenunciaDAO;
+
 import java.util.List;
+
+import model.Cidadao;
 import model.Denuncia;
 
 public class DenunciaService {
@@ -34,5 +37,10 @@ public class DenunciaService {
     public List<Denuncia> listarDenuncia() {
         DenunciaDAO denunciaDAO = new DenunciaDAO();
         return denunciaDAO.listar();
-    }    
+    }
+
+    public List<Denuncia> listarMinhasDenuncias(Cidadao cidadao) {
+        DenunciaDAO denunciaDAO = new DenunciaDAO();
+        return denunciaDAO.listarById(cidadao);
+    }
 }   

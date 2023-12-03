@@ -4,6 +4,8 @@
  */
 package view;
 
+import model.Cidadao;
+
 import javax.swing.*;
 
 /**
@@ -12,11 +14,22 @@ import javax.swing.*;
  */
 public class TelaPrincipalUsuario extends javax.swing.JFrame {
 
+    private Cidadao cidadao;
+
     /**
      * Creates new form TelaPrincipal
      */
     public TelaPrincipalUsuario() {
         initComponents();
+    }
+
+    public TelaPrincipalUsuario(Cidadao cidadao) {
+        this.cidadao = cidadao;
+        initComponents();
+    }
+
+    public void setCidadao(Cidadao cidadao) {
+        this.cidadao = cidadao;
     }
 
     /**
@@ -27,6 +40,8 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        System.out.println("nome de usuario tela de principal2: " + cidadao.getNome());
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -49,7 +64,7 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
         setTitle("Se liga, cidadão!");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Seja Bem-Vindo(a) ao Se liga, Cidadão!");
+        jLabel1.setText("Seja Bem-Vindo(a) " + this.cidadao.getNome() + " ao Se liga, Cidadão!");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Para utilizar as funções utilize os menus no canto superior esquerdo.");
@@ -143,13 +158,13 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
 
     private void cadDenunciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadDenunciaButtonActionPerformed
         // TODO add your handling code here:
-        TelaCadastrarDenuncias telacad = new TelaCadastrarDenuncias();
+        TelaCadastrarDenuncias telacad = new TelaCadastrarDenuncias(this.cidadao);
         telacad.setVisible(true);
     }//GEN-LAST:event_cadDenunciaButtonActionPerformed
 
     private void conDenunciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conDenunciaButtonActionPerformed
         // TODO add your handling code here:
-        TelaConsultarDenuncias telacon = new TelaConsultarDenuncias();
+        TelaConsultarDenuncias telacon = new TelaConsultarDenuncias(this.cidadao);
         telacon.setVisible(true);
     }//GEN-LAST:event_conDenunciaButtonActionPerformed
 

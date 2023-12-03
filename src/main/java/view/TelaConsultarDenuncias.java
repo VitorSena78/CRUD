@@ -5,10 +5,13 @@
 package view;
 
 import controller.DenunciaService;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+import model.Cidadao;
 import model.Denuncia;
 
 /**
@@ -18,10 +21,21 @@ import model.Denuncia;
 public class TelaConsultarDenuncias extends javax.swing.JFrame {
 
     private Denuncia denuncia;
+    private Cidadao cidadao;
+
     /**
      * Creates new form TelaConsultarDenunciasU
      */
     public TelaConsultarDenuncias() {
+        initComponents();
+        this.denuncia = new Denuncia();
+        this.carregarTabela();
+        saveButton.setVisible(false);
+        disableCampos();
+    }
+
+    public TelaConsultarDenuncias(Cidadao cidadao) {
+        this.cidadao = cidadao;
         initComponents();
         this.denuncia = new Denuncia();
         this.carregarTabela();
@@ -211,19 +225,19 @@ public class TelaConsultarDenuncias extends javax.swing.JFrame {
 
     public void carregarTabela() {
 
-    DefaultTableModel model = (DefaultTableModel) this.jTableDenuncias.getModel();
-    model.setNumRows(0);
+        DefaultTableModel model = (DefaultTableModel) this.jTableDenuncias.getModel();
+        model.setNumRows(0);
 
-    List<Denuncia> lista = new ArrayList<>();
-    lista = denuncia.getLista();
+        DenunciaService denunciaService = new DenunciaService();
+        List<Denuncia> listaMinhasDenuncias = denunciaService.listarMinhasDenuncias(this.cidadao);
 
-    for (Denuncia d : lista) {
-        model.addRow(new Object[]{
-                d.getId(),
-                d.getLocalizacaoC(),
-                d.getDescricao()
-        });
-    }
+        for (Denuncia d : listaMinhasDenuncias) {
+            model.addRow(new Object[]{
+                    d.getId(),
+                    d.getLocalizacaoC(),
+                    d.getDescricao()
+            });
+        }
     }
     
     private void disableCampos() {
@@ -235,7 +249,6 @@ public class TelaConsultarDenuncias extends javax.swing.JFrame {
     private void enableCampos() {
         campoLoc.setEnabled(true);
         campoDesc.setEnabled(true);
-
     }
     
     private void eraseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eraseButtonActionPerformed

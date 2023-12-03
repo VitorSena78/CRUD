@@ -28,15 +28,15 @@ localizacao varchar(250) not null,
 imagem_anexada longblob
 );
 ## ALTERAR DADO NA TABELA (NESTE CASO EM ESPECIFICO ADICIONAR FK & CONSTRAINT)
-ALTER TABLE Tbl_Cidadao
-ADD CONSTRAINT uq_email UNIQUE (email);
+##ALTER TABLE Tbl_Cidadao
+##ADD CONSTRAINT uq_email UNIQUE (email);
 
 
-ALTER TABLE Tbl_Denuncia
-ADD COLUMN fk_id_Cidadao int not null,
-ADD CONSTRAINT fk_Cidadao_Denuncia
-    FOREIGN KEY (fk_id_Cidadao)
-    REFERENCES Tbl_Cidadao(id_Cidadao);
+##ALTER TABLE Tbl_Denuncia
+##ADD COLUMN fk_id_Cidadao int not null,
+##ADD CONSTRAINT fk_Cidadao_Denuncia
+##    FOREIGN KEY (fk_id_Cidadao)
+##    REFERENCES Tbl_Cidadao(id_Cidadao);
 
 ## INSERIR INFORMACAO NO BANCO
 ##Select * from Tbl_Cidadao;

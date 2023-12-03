@@ -24,26 +24,8 @@ public class DenunciaDAO {
             while (resultSet.next()) {
                 Denuncia denuncia = new Denuncia();
                 denuncia.setId(resultSet.getInt("id_Denuncia"));
-                // Mapeando a lista de fotos
-                /*
-                List<String> fotos = new ArrayList<>();
-                // Supondo que as fotos estejam armazenadas em coluna chamada "foto" e separadas por vírgula
-                String fotosString = resultSet.getString("foto");
-                if (fotosString != null && !fotosString.isEmpty()) {
-                    String[] fotosArray = fotosString.split(",");
-                    for (String foto : fotosArray) {
-                        fotos.add(foto.trim());
-                    }
-                }
-                denuncia.setFoto(fotos);
-                denuncia.setTipoDeProblema(resultSet.getString("tipoDeProblema"));
-                */
-
                 denuncia.setDescricao(resultSet.getString("descrição"));
                 denuncia.setLocalizacao(resultSet.getString("localizacao"));
-                //               denuncia.setRua(resultSet.getString("rua"));
-                //               denuncia.setComp(resultSet.getString("complemento"));
-                //               denuncia.setStatus(resultSet.getString("status"));
                 denunciasDb.add(denuncia);
             }
         } catch (SQLException e) {
@@ -52,34 +34,33 @@ public class DenunciaDAO {
         return denunciasDb;
     }
 
-   /* public List<Cidadao> listarById() {
-        String sql = "SELECT * FROM Tbl_Cidadao ";
-        List<Cidadao> cidadaoDb = new ArrayList<>();
+    public List<Denuncia> listarById(Cidadao cidadao) {
+        String sql = "SELECT * FROM Tbl_Denuncia WHERE Tbl_Cidadao_id_Cidadao = ?";
+        List<Denuncia> denunciasDb = new ArrayList<>();
         try {
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, cidadao.getId());
             ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()){
-                Cidadao cidadao = new Cidadao();
-                cidadao.setId(resultSet.getInt("id_Cidadao"));
-                cidadao.setData_nascimento(String.valueOf(resultSet.getDate("dt_nascimento")));
-                cidadao.setNome(resultSet.getString("nome"));
-                cidadao.setSenha(resultSet.getString("senha"));
-                cidadao.setEmail(resultSet.getString("email"));
-                cidadaoDb.add(cidadao);
+            while (resultSet.next()) {
+                Denuncia denuncia = new Denuncia();
+                denuncia.setId(resultSet.getInt("id_Denuncia"));
+                denuncia.setDescricao(resultSet.getString("descrição"));
+                denuncia.setLocalizacao(resultSet.getString("localizacao"));
+                denunciasDb.add(denuncia);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return cidadaoDb;
-    }*/
+        return denunciasDb;
+    }
 
     public boolean inserir(@NotNull Denuncia denuncia) {
-        //String sql = "INSERT INTO Tbl_Denuncia(descrição, status_atualizacao, localizacao, imagem_anexada, fk_id_Cidadao) VALUES(?, ?, ?, ?,?)";
-        String sql = "INSERT INTO Tbl_Denuncia(descrição, status_atualizacao, localizacao, imagem_anexada) VALUES(?, ?, ?, ?)";
+        //String sql = "INSERT INTO Tbl_Denuncia(descrição, localizacao, imagem_anexada, fk_id_Cidadao) VALUES(?, ?, ?, ?,?)";
+        String sql = "INSERT INTO Tbl_Denuncia(Tbl_Cidadao_id_Cidadao, descrição, localizacao, imagem_anexada) VALUES(?, ?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, denuncia.getDescricao());
-            stmt.setString(2, denuncia.getStatus());
+            stmt.setInt(1, denuncia.getCidadiaId());
+            stmt.setString(2, denuncia.getDescricao());
             stmt.setString(3, denuncia.getLocalizacao());
             stmt.setString(4, null);
             //stmt.setInt(5, denuncia.getCidadiaId());

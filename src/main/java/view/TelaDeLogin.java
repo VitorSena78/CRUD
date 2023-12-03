@@ -12,7 +12,7 @@ import java.awt.geom.RoundRectangle2D;
 
 public class TelaDeLogin extends JFrame {
 
-    Cidadao cidadao = new Cidadao();
+    private Cidadao cidadao;
 
     public TelaDeLogin() {
 
@@ -92,7 +92,10 @@ public class TelaDeLogin extends JFrame {
                     cidadao = cidadaoService.getCidadao();
                     JOptionPane.showMessageDialog(frame, "Login bem-sucedido!");
                     frame.dispose();
-                    TelaPrincipalUsuario telausuario = new TelaPrincipalUsuario();
+                    TelaPrincipalUsuario telausuario = new TelaPrincipalUsuario(cidadao);
+                    /*telausuario.setPassword(String.valueOf(password));
+                    telausuario.setUsername(username);*/
+                    System.out.println("nome de usuario tela de loguin: " + username);
                     telausuario.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Nome de usuário ou senha incorretos.");

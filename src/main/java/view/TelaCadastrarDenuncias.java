@@ -5,6 +5,7 @@
 package view;
 
 import controller.DenunciaService;
+import model.Cidadao;
 import model.Denuncia;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -23,12 +24,19 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
      */
 
     private Denuncia denuncia;
-    
-    
-    public TelaCadastrarDenuncias() {       
-        initComponents();
+    private Cidadao cidadao;
+
+    public TelaCadastrarDenuncias() {
         this.denuncia = new Denuncia();
+        initComponents();
     }
+
+    public TelaCadastrarDenuncias(Cidadao cidadao) {
+        this.cidadao = cidadao;
+        this.denuncia = new Denuncia();
+        initComponents();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,28 +179,26 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
             }
            
                 comp = this.textoComp.getText();
-            
-            if (this.textoDesc.getText().length() < 10){
+
+            if (this.textoDesc.getText().length() < 10) {
                 throw new Mensagens("Preencha a descrição do problema.");
 
             } else {
                 desc = this.textoDesc.getText();
             }
 
-            if(this.denuncia.cadastro(bairro,rua,comp,desc)){
+            if (this.denuncia.cadastro(bairro, rua, comp, desc)) {
                 JOptionPane.showMessageDialog(rootPane, "Sua denúncia foi cadastrada!");
+                DenunciaService denunciaService = new DenunciaService();
+                //Denuncia denuncia = new  Denuncia(bairro,rua,comp,desc,1);
+                Denuncia denuncia = new Denuncia(bairro, rua, comp, desc, this.cidadao.getId());
+                denunciaService.registraDenuncia(denuncia);
                 this.dispose();
-                
-            }        
-                
-        } catch (Mensagens erro){
+            }
+
+        } catch (Mensagens erro) {
             JOptionPane.showMessageDialog(null, erro.getMessage());
         }
-
-        DenunciaService denunciaService = new DenunciaService();
-        //Denuncia denuncia = new  Denuncia(bairro,rua,comp,desc,1);
-        Denuncia denuncia = new  Denuncia(bairro,rua,comp,desc);
-        denunciaService.registraDenuncia(denuncia);
 
 
     }//GEN-LAST:event_nextButtonActionPerformed
