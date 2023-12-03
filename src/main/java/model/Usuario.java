@@ -11,7 +11,7 @@ public class Usuario {
     private int id;
     private String nome;
     private String senha;
-    private int idade; //não tem no diagrama (remover do codigo ou acrecentar ao diagrama)
+    private int idade;
     private String email;
     private String data_nascimento;
 
