@@ -33,6 +33,7 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
 
     public TelaCadastrarDenuncias(Cidadao cidadao) {
         this.cidadao = cidadao;
+        System.out.println(this.cidadao.getId());
         this.denuncia = new Denuncia();
         initComponents();
     }
