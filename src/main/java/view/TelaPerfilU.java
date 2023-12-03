@@ -195,8 +195,6 @@ public class TelaPerfilU extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        disableCampos();
-        saveButton.setVisible(false);
         int option = JOptionPane.showConfirmDialog(this, "Deseja realmente editar seu perfil?", "Confirmação", JOptionPane.YES_NO_OPTION);
         int id;
         String nome;
@@ -216,7 +214,6 @@ public class TelaPerfilU extends javax.swing.JFrame {
             Cidadao cidadao = new Cidadao();
             if (!Arrays.equals(senha1, senha2)) {
                 JOptionPane.showMessageDialog(null, "As senhas não coincidem.", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
             }else if(senha1.length != 0){
                 cidadao.setNome(nome);
                 cidadao.setSenha(new String(senha1));
@@ -233,7 +230,7 @@ public class TelaPerfilU extends javax.swing.JFrame {
                 cidadaoService.alteraCidadao(cidadao);
                 disableCampos();
                 saveButton.setVisible(false);
-            
+                
             }
         }
     }//GEN-LAST:event_saveButtonActionPerformed

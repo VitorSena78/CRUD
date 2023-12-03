@@ -68,7 +68,7 @@ public class Denuncia {
 
 
     public String getLocalizacao() {
-        return bairro + rua + comp;
+        return bairro + "; " + rua + "; " + comp;
     }
 
     public void setLocalizacao(String localizacao) {

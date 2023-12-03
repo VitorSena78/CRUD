@@ -102,7 +102,8 @@ public class TelaConsultarDenuncias extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableDenuncias);
         if (jTableDenuncias.getColumnModel().getColumnCount() > 0) {
-            jTableDenuncias.getColumnModel().getColumn(0).setResizable(false);
+            jTableDenuncias.getColumnModel().getColumn(0).setMinWidth(35);
+            jTableDenuncias.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         campoDesc.setColumns(20);
