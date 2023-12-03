@@ -16,8 +16,11 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="denunciasButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Minhas den&#xfa;ncias"/>
+            <Property name="text" type="java.lang.String" value="Den&#xfa;ncias"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="denunciasButtonActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="cadDenunciaButton">
               <Properties>
@@ -33,6 +36,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conDenunciaButtonActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="conAllDenuncias">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Visualizar todas as den&#xfa;ncias"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="conAllDenunciasActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

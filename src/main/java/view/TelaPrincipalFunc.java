@@ -35,7 +35,7 @@ public class TelaPrincipalFunc extends javax.swing.JFrame {
         conDenunciaButton = new javax.swing.JMenuItem();
         conUsuarioButton = new javax.swing.JMenuItem();
         profileButton = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        quitButton = new javax.swing.JMenuItem();
         configButton = new javax.swing.JMenu();
         exitButton = new javax.swing.JMenu();
 
@@ -74,9 +74,14 @@ public class TelaPrincipalFunc extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem3.setText("Desconectar");
-        jMenuItem3.setToolTipText("");
-        profileButton.add(jMenuItem3);
+        quitButton.setText("Desconectar");
+        quitButton.setToolTipText("");
+        quitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitButtonActionPerformed(evt);
+            }
+        });
+        profileButton.add(quitButton);
 
         jMenuBar1.add(profileButton);
 
@@ -142,6 +147,12 @@ public class TelaPrincipalFunc extends javax.swing.JFrame {
         telausuarios.setVisible(true);
     }//GEN-LAST:event_conUsuarioButtonActionPerformed
 
+    private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        TelaDeLogin telalogin = new TelaDeLogin();
+    }//GEN-LAST:event_quitButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -179,7 +190,9 @@ public class TelaPrincipalFunc extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem conDenunciaButton;
     private javax.swing.JMenuItem conUsuarioButton;
@@ -189,7 +202,7 @@ public class TelaPrincipalFunc extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenu profileButton;
+    private javax.swing.JMenuItem quitButton;
     // End of variables declaration//GEN-END:variables
 }
