@@ -95,7 +95,7 @@ public class TelaDeLogin extends JFrame {
                     TelaPrincipalUsuario telausuario = new TelaPrincipalUsuario(cidadao);
                     /*telausuario.setPassword(String.valueOf(password));
                     telausuario.setUsername(username);*/
-                    System.out.println("nome de usuario tela de loguin: " + username);
+                    System.out.println("nome de usuario tela de login: " + username);
                     telausuario.setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Nome de usuário ou senha incorretos.");

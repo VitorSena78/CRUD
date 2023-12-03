@@ -84,7 +84,8 @@ public class CidadaoDAO implements CrudDAO {
         String sql = "UPDATE Tbl_Cidadao SET nome=?, dt_nascimento=?, email=?, senha=? WHERE id=?";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(sql);
-            stmt.setString(1,cidadao.getNome());stmt.setString(2,cidadao.getData_nascimento());
+            stmt.setString(1,cidadao.getNome());
+            stmt.setString(2,cidadao.getData_nascimento());
             stmt.setString(3,cidadao.getEmail());
             stmt.setString(4,cidadao.getSenha());
             stmt.setInt(5, cidadao.getId());

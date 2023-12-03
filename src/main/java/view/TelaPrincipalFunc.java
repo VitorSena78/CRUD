@@ -123,7 +123,7 @@ public class TelaPrincipalFunc extends javax.swing.JFrame {
 
     private void conDenunciaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conDenunciaButtonActionPerformed
         // TODO add your handling code here:
-        TelaConsultarDenuncias telacon = new TelaConsultarDenuncias();
+        TelaConsultarTodasDenuncias telacon = new TelaConsultarTodasDenuncias();
         telacon.setVisible(true);
     }//GEN-LAST:event_conDenunciaButtonActionPerformed
 

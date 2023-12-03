@@ -10,32 +10,21 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-import model.Cidadao;
 import model.Denuncia;
 
 /**
  *
  * @author User
  */
-public class TelaConsultarDenuncias extends javax.swing.JFrame {
+public class TelaConsultarTodasDenuncias extends javax.swing.JFrame {
 
     private Denuncia denuncia;
-    private Cidadao cidadao;
+
 
     /**
      * Creates new form TelaConsultarDenunciasU
      */
-    public TelaConsultarDenuncias() {
-        initComponents();
-        this.denuncia = new Denuncia();
-        this.carregarTabela();
-        saveButton.setVisible(false);
-        disableCampos();
-    }
-
-    public TelaConsultarDenuncias(Cidadao cidadao) {
-        this.cidadao = cidadao;
+    public TelaConsultarTodasDenuncias() {
         initComponents();
         this.denuncia = new Denuncia();
         this.carregarTabela();
@@ -229,7 +218,7 @@ public class TelaConsultarDenuncias extends javax.swing.JFrame {
         model.setNumRows(0);
 
         DenunciaService denunciaService = new DenunciaService();
-        List<Denuncia> listaMinhasDenuncias = denunciaService.listarMinhasDenuncias(this.cidadao);
+        List<Denuncia> listaMinhasDenuncias = denunciaService.listarDenuncia();
 
         for (Denuncia d : listaMinhasDenuncias) {
             model.addRow(new Object[]{
@@ -336,21 +325,23 @@ public class TelaConsultarDenuncias extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultarDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarTodasDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultarDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarTodasDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultarDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarTodasDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaConsultarDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaConsultarTodasDenuncias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaConsultarDenuncias().setVisible(true);
+                new TelaConsultarTodasDenuncias().setVisible(true);
             }
         });
     }

@@ -4,21 +4,40 @@
  */
 package view;
 
+import controller.CidadaoService;
+import javax.swing.JOptionPane;
+import model.Cidadao;
+
 /**
  *
  * @author User
  */
 public class TelaPerfilU extends javax.swing.JFrame {
-
+    
+    private Cidadao cidadao;
+    private CidadaoService cidadaoService;
+    
     /**
      * Creates new form TelaPerfilU
      */
     public TelaPerfilU() {
         initComponents();
+        this.cidadao = cidadao;
+        carregaDados();
         disableCampos();
         saveButton.setVisible(false);
-
+        
     }
+    
+    public TelaPerfilU(Cidadao cidadao) {
+        initComponents();
+        this.cidadao = cidadao;
+        carregaDados();
+        disableCampos();
+        saveButton.setVisible(false);
+        
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +63,7 @@ public class TelaPerfilU extends javax.swing.JFrame {
 
         jButton3.setText("jButton3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Meu perfil");
 
         jLabel1.setText("Nome:");
@@ -88,21 +107,21 @@ public class TelaPerfilU extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backButton)
-                        .addGap(77, 77, 77)
-                        .addComponent(editButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(saveButton))
-                    .addComponent(jLabel1)
-                    .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addComponent(campoEmail)
-                    .addComponent(campoPassword1)
-                    .addComponent(campoPassword2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(editButton)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel3)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(backButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(saveButton))
+                        .addComponent(jLabel1)
+                        .addComponent(campoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addComponent(campoEmail)
+                        .addComponent(campoPassword1)
+                        .addComponent(campoPassword2)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,7 +135,9 @@ public class TelaPerfilU extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editButton)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,10 +145,9 @@ public class TelaPerfilU extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
-                    .addComponent(editButton)
                     .addComponent(saveButton))
                 .addGap(28, 28, 28))
         );
@@ -152,6 +172,13 @@ public class TelaPerfilU extends javax.swing.JFrame {
 
     }
     
+    private void carregaDados(){
+        campoNome.setText(cidadao.getNome());
+        campoEmail.setText(cidadao.getEmail());
+
+    
+    }
+        
     private void campoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoNomeActionPerformed
@@ -164,15 +191,31 @@ public class TelaPerfilU extends javax.swing.JFrame {
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
         enableCampos();
-        this.editButton.setVisible(false);
-        this.saveButton.setVisible(true);
+        editButton.setVisible(false);
+        saveButton.setVisible(true);
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
         disableCampos();
-        this.editButton.setVisible(true);
-        this.saveButton.setVisible(false);
+        editButton.setVisible(true);
+        saveButton.setVisible(false);
+        int option = JOptionPane.showConfirmDialog(this, "Deseja realmente editar seu perfil?", "Confirmação", JOptionPane.YES_NO_OPTION);
+        int id;
+        String nome;
+        String email;
+        CidadaoService cidadaoService = new CidadaoService();
+
+        if (option == JOptionPane.YES_OPTION) {
+            nome = this.campoNome.getText();
+            email = this.campoEmail.getText();
+            id = this.cidadao.getId();
+            Cidadao cidadao = new Cidadao();
+
+            cidadaoService.alteraCidadao(cidadao);
+            disableCampos();
+            saveButton.setVisible(false);
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
