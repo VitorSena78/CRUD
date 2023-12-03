@@ -216,16 +216,6 @@ public class TelaPerfilU extends javax.swing.JFrame {
             disableCampos();
             saveButton.setVisible(false);
         }
-/*
-        cidadao.setNome(campoNome.getText());
-        cidadao.setEmail(campoEmail.getText());
-
-        if (cidadaoService.alteraCidadao(cidadao)) {
-            JOptionPane.showMessageDialog(this, "Perfil atualizado com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao atualizar o perfil.");
-        }
-*/
     }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
