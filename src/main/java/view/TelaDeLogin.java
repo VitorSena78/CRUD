@@ -123,8 +123,9 @@ public class TelaDeLogin extends JFrame {
         govButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                FuncGoverno funcionario = new FuncGoverno();
+               frame.dispose();
+               FuncGoverno funcionario = new FuncGoverno();
+               funcionario.setVisible(true);
             }
         });
 
