@@ -1,28 +1,27 @@
 package DAO;
 
-import model.Cidadao;
 import model.FuncionarioGoverno;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
-import java.util.List;
-
-public class FuncionarioGovernoDAO extends UsuarioDAO {
+public class FuncionarioGovernoDAO implements CrudDAO {
+    private Connection connection;
 
     public FuncionarioGovernoDAO() {
-        super.setConnection(Conexao.getconection());
+        this.connection = Conexao.getconection();
     }
 
-    public List<FuncionarioGoverno> listar(){
-       String sql = "SELECT * FROM Tbl_Fun_Gov";
-       List<FuncionarioGoverno> funcionarioDb = new ArrayList<>();
-       try{
-          PreparedStatement stmt = super.getConnection().prepareStatement(sql);
-          ResultSet resultSet = stmt.executeQuery();
+    public List<FuncionarioGoverno> listar() {
+        String sql = "SELECT * FROM Tbl_Fun_Gov";
+        List<FuncionarioGoverno> funcionarioDb = new ArrayList<>();
+        try {
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            ResultSet resultSet = stmt.executeQuery();
           while (resultSet.next()){
               FuncionarioGoverno func = new FuncionarioGoverno();
               func.setId(resultSet.getInt("id_Fun_Gov"));
@@ -40,7 +39,7 @@ public class FuncionarioGovernoDAO extends UsuarioDAO {
         FuncionarioGoverno funcionarioDb = new FuncionarioGoverno();
         boolean encontrou = false;
         try{
-            PreparedStatement stmt = super.getConnection().prepareStatement(sql);
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
             stmt.setString(1,nome);
             stmt.setString(2,senha);
             ResultSet resultSet = stmt.executeQuery();
@@ -48,7 +47,7 @@ public class FuncionarioGovernoDAO extends UsuarioDAO {
                 encontrou = true;
                 FuncionarioGoverno funcionario = new FuncionarioGoverno();
                 funcionario.setId(resultSet.getInt("id_Fun_Gov"));
-                funcionario.setNome(resultSet.getString("nome"));                
+                funcionario.setNome(resultSet.getString("nome"));
                 funcionario.setSenha(resultSet.getString("senha"));
                 System.out.println("Bem vindo, funcionário!");
             }else{
@@ -58,21 +57,21 @@ public class FuncionarioGovernoDAO extends UsuarioDAO {
             System.out.println("Erro ao consultar no banco de dados");
             throw new RuntimeException(e);
         }
-        return encontrou ? funcionarioDb: null;
+        return encontrou ? funcionarioDb : null;
     }
 
     @Override
-    public boolean inserir() {
-        return super.inserir();
-    }
-
-    @Override
-    public boolean alterar() {
-        return super.alterar();
+    public boolean pesquisar(int id) {
+        return false;
     }
 
     @Override
     public boolean remover(int id) {
-        return super.remover(id);
+        return false;
+    }
+
+    @Override
+    public Connection getConnection() {
+        return this.connection;
     }
 }
