@@ -300,7 +300,6 @@ public class TelaConsultarDenuncias extends javax.swing.JFrame {
         // TODO add your handling code here:
         saveButton.setVisible(true);
 
-        //com o botão editar ele autera a denúncia no banco de dados (leo não ciou uma ação para o botão salvar)
         int option = JOptionPane.showConfirmDialog(this, "Deseja realmente editar a denúncia?", "Confirmação", JOptionPane.YES_NO_OPTION);
         int id;
         String loc;

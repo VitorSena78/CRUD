@@ -179,7 +179,7 @@ public class TelaPrincipalUsuario extends javax.swing.JFrame {
 
     private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
         // TODO add your handling code here:
-        TelaPerfilU telaperfil = new TelaPerfilU();
+        TelaPerfilU telaperfil = new TelaPerfilU(cidadao);
         telaperfil.setVisible(true);
     }//GEN-LAST:event_editProfileButtonActionPerformed
 
