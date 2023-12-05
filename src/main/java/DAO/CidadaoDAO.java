@@ -49,6 +49,7 @@ public class CidadaoDAO implements CrudDAO {
             stmt.setString(2, senha);
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
+                encontrou = true;
                 cidadaoDb.setId(resultSet.getInt("id_Cidadao"));
                 cidadaoDb.setNome(resultSet.getString("nome"));
                 cidadaoDb.setEmail(resultSet.getString("email"));
@@ -62,7 +63,7 @@ public class CidadaoDAO implements CrudDAO {
             System.out.println("erro ao consultar no banco de dados");
             throw new RuntimeException(e);
         }
-        return cidadaoDb;
+        return encontrou ? cidadaoDb : null;
     }
 
     public boolean inserir(@NotNull Cidadao cidadao) {

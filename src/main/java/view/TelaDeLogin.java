@@ -86,15 +86,12 @@ public class TelaDeLogin extends JFrame {
                 if (username.isEmpty() || password.length == 0) {
                     JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
                 }
-
-
-                if (cidadaoService.consultaCidadao(username, String.valueOf(password))) {
+                
+                else if (cidadaoService.consultaCidadao(username, String.valueOf(password))) {
                     cidadao = cidadaoService.getCidadao();
                     JOptionPane.showMessageDialog(frame, "Login bem-sucedido!");
                     frame.dispose();
                     TelaPrincipalUsuario telausuario = new TelaPrincipalUsuario(cidadao);
-                    /*telausuario.setPassword(String.valueOf(password));
-                    telausuario.setUsername(username);*/
                     System.out.println("nome de usuario tela de login: " + username);
                     telausuario.setVisible(true);
                 } else {
