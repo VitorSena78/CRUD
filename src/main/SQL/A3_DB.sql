@@ -1,7 +1,3 @@
-CREATE DATABASE A3_DB;
-
-use A3_DB;
-
 CREATE TABLE Tbl_Fun_GOV (
   id_Fun_GOV INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(100) NOT NULL,
@@ -32,8 +28,8 @@ CREATE TABLE Tbl_Denuncia (
   INDEX Tbl_Denuncia_FKIndex1(Tbl_Cidadao_id_Cidadao),
   FOREIGN KEY(Tbl_Cidadao_id_Cidadao)
     REFERENCES Tbl_Cidadao(id_Cidadao)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
 );
 
 CREATE TABLE Tbl_Fun_GOV_has_Tbl_Denuncia (
@@ -45,16 +41,12 @@ CREATE TABLE Tbl_Fun_GOV_has_Tbl_Denuncia (
   INDEX Tbl_Fun_GOV_has_Tbl_Denuncia_FKIndex2(Tbl_Denuncia_id_Denuncia, Tbl_Denuncia_Tbl_Cidadao_id_Cidadao),
   FOREIGN KEY(Tbl_Fun_GOV_id_Fun_GOV)
     REFERENCES Tbl_Fun_GOV(id_Fun_GOV)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE,
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
   FOREIGN KEY(Tbl_Denuncia_id_Denuncia, Tbl_Denuncia_Tbl_Cidadao_id_Cidadao)
     REFERENCES Tbl_Denuncia(id_Denuncia, Tbl_Cidadao_id_Cidadao)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
 );
 
-SELECT * FROM Tbl_Denuncia;
-SELECT * FROM Tbl_Cidadao;
-SELECT * FROM Tbl_Fun_GOV;
 
-INSERT INTO Tbl_Fun_GOV (nome, orgao, cargo, dt_nascimento, email, senha) VALUES ('adm.teste', 'Órgão Teste', 'Cargo Teste', '1990-01-01', 'adm.teste@example.com', 'senha123');

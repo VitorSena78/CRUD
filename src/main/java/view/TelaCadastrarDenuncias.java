@@ -26,6 +26,10 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
     private Denuncia denuncia;
     private Cidadao cidadao;
 
+    public TelaCadastrarDenuncias() {
+        this.denuncia = new Denuncia();
+        initComponents();
+    }
 
     public TelaCadastrarDenuncias(Cidadao cidadao) {
         this.cidadao = cidadao;
@@ -189,8 +193,6 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
                 DenunciaService denunciaService = new DenunciaService();
                 //Denuncia denuncia = new  Denuncia(bairro,rua,comp,desc,1);
                 Denuncia denuncia = new Denuncia(bairro, rua, comp, desc, this.cidadao.getId());
-                System.out.println(this.cidadao.getId());
-                System.out.println(denuncia.getCidadiaId());
                 denunciaService.registraDenuncia(denuncia);
                 this.dispose();
             }
@@ -214,7 +216,7 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         ////<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -250,7 +252,7 @@ public class TelaCadastrarDenuncias extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastrarDenuncias(cidadao).setVisible(true);
+                new TelaCadastrarDenuncias().setVisible(true);
             }
         });
     }

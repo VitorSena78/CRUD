@@ -4,23 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cac9a311-7b5b-446e-8684-7941eb956bef" name="Changes" comment="atualização no banco de dados">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cac9a311-7b5b-446e-8684-7941eb956bef" name="Changes" comment="Consultas de minhas denúncias agora exibe somente as denúncias feitas pelo cidadão, não mais todas as denúncias.&#10;Foi criado um novo banco de dados para comportas as mudanças usando chave estrangeira.&#10;Denuncia agora possui o ‘id’ do cidadão como chave estrangeira.&#10;Os dados dos cidadãos passam da tela de ‘login’ para as demais telas.">
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CidadaoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CidadaoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/Conexao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/CrudDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CrudDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/DAO/FuncionarioGovernoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/FuncionarioGovernoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AssociacaoEntidadePolitica.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AutenticacaoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CidadaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CidadaoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DenunciaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DenunciaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FuncionarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FuncionarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Cidadao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Cidadao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Denuncia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Denuncia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/FuncionarioGoverno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/FuncionarioGoverno.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Politico.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/principal/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/principal/Principal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DAO/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DAO/CrudDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +28,7 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -48,12 +36,6 @@
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
-    <option name="recentNewPullRequestHead">
-      <RepoCoordinatesHolder>
-        <option name="owner" value="VitorSena78" />
-        <option name="repository" value="CRUD" />
-      </RepoCoordinatesHolder>
-    </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
         <option name="accountId" value="46d4df50-3902-4555-b968-2aae4bb37cba" />
@@ -312,35 +294,7 @@
       <option name="project" value="LOCAL" />
       <updated>1701190956672</updated>
     </task>
-    <task id="LOCAL-00019" summary="Criação da ‘interface’ conforme solicitação do professor">
-      <created>1701619190629</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1701619190629</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Criação da ‘interface’ conforme solicitação do professor">
-      <created>1701622776410</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1701622776410</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Melhorias para prevenir bug da tela de cadastro">
-      <created>1701697068980</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1701697068980</updated>
-    </task>
-    <task id="LOCAL-00022" summary="atualização no banco de dados">
-      <created>1702415935732</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1702415935732</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -354,7 +308,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/jv_test" />
+                        <option value="origin/teste" />
                       </list>
                     </value>
                   </entry>
@@ -380,10 +334,7 @@
     <MESSAGE value="deletar deenuncia" />
     <MESSAGE value="Preparativo para visualização da minha denuncia" />
     <MESSAGE value="mudança no banco de dados" />
-    <MESSAGE value="Criação da ‘interface’ conforme solicitação do professor" />
-    <MESSAGE value="Melhorias para prevenir bug da tela de cadastro" />
-    <MESSAGE value="atualização no banco de dados" />
-    <option name="LAST_COMMIT_MESSAGE" value="atualização no banco de dados" />
+    <option name="LAST_COMMIT_MESSAGE" value="mudança no banco de dados" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

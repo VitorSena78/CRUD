@@ -3,6 +3,7 @@ package model;
 import controller.CidadaoService;
 
 import java.util.List;
+import java.util.ArrayList;
 
 
 public class Usuario {
@@ -34,6 +35,17 @@ public class Usuario {
         this.email = email;
     }
 
+    public Usuario(String nomeUsuario, String email, String senha, int id) {
+        this.nome = nomeUsuario;
+        this.email = email;
+        this.senha = senha;
+        this.id = id;
+
+    }
+
+    public int getIdade() {
+        return idade;
+    }
 
     public void setIdade(int idade) {
         this.idade = idade;

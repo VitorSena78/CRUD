@@ -75,7 +75,6 @@ public class CidadaoDAO implements CrudDAO {
             stmt.setString(3, cidadao.getEmail());
             stmt.setString(4, cidadao.getSenha());
             stmt.execute();
-            System.out.println("cadastro realizado com sucesso");
             return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -101,6 +100,11 @@ public class CidadaoDAO implements CrudDAO {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @Override
+    public boolean pesquisar(int id) {
+        return false;
     }
 
     @Override

@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import java.util.List;
+
 import DAO.FuncionarioGovernoDAO;
 import model.FuncionarioGoverno;
 /**
