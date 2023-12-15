@@ -24,7 +24,7 @@ public class CidadaoDAO implements CrudDAO {
         try {
             PreparedStatement stmt = getConnection().prepareStatement(sql);
             ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Cidadao cidadao = new Cidadao();
                 cidadao.setId(resultSet.getInt("id_Cidadao"));
                 cidadao.setData_nascimento(String.valueOf(resultSet.getDate("dt_nascimento")));
@@ -39,7 +39,7 @@ public class CidadaoDAO implements CrudDAO {
         return cidadaoDb;
     }
 
-    public Cidadao pesquisar(String nome, String senha){
+    public Cidadao pesquisar(String nome, String senha) {
         String sql = "SELECT * FROM Tbl_Cidadao WHERE nome = ? AND senha = ?";
         Cidadao cidadaoDb = new Cidadao();
         boolean encontrou = false;
@@ -55,7 +55,7 @@ public class CidadaoDAO implements CrudDAO {
                 cidadaoDb.setSenha(resultSet.getString("senha"));
                 cidadaoDb.setData_nascimento(String.valueOf(resultSet.getDate("dt_nascimento")));
                 System.out.println("login bem sucedido");
-            } else  {
+            } else {
                 System.out.println("erro ao consultar cidadão do banco de dados");
             }
         } catch (SQLException e) {
@@ -85,9 +85,9 @@ public class CidadaoDAO implements CrudDAO {
         String sql = "UPDATE Tbl_Cidadao SET nome=?, email=?, senha=? WHERE id_Cidadao=?";
         try {
             PreparedStatement stmt = getConnection().prepareStatement(sql);
-            stmt.setString(1,cidadao.getNome());
-            stmt.setString(2,cidadao.getEmail());
-            stmt.setString(3,cidadao.getSenha());
+            stmt.setString(1, cidadao.getNome());
+            stmt.setString(2, cidadao.getEmail());
+            stmt.setString(3, cidadao.getSenha());
             stmt.setInt(4, cidadao.getId());
             stmt.execute();
             System.out.println(cidadao.getNome());
@@ -100,11 +100,6 @@ public class CidadaoDAO implements CrudDAO {
             throw new RuntimeException(e);
         }
 
-    }
-
-    @Override
-    public boolean pesquisar(int id) {
-        return false;
     }
 
     @Override

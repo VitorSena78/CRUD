@@ -59,13 +59,6 @@ public class Denuncia {
         return true;
     }
 
-    public boolean cadastro2(String descricao) {
-        this.descricao = descricao;
-        Denuncia denuncia = new Denuncia(bairro, rua, comp, descricao);
-        //       DenunciaDAO.denunciasDb.add(denuncia);
-        return true;
-    }
-
 
     public String getLocalizacao() {
         return bairro + rua + comp;
@@ -104,57 +97,8 @@ public class Denuncia {
         return null;
     }
 
-    public List<String> getFoto() {
-        return foto;
-    }
-
-    public void setFoto(List<String> foto) {
-        this.foto = foto;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-
-    public String getComp() {
-        return comp;
-    }
-
-    public void setComp(String comp) {
-        this.comp = comp;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void atualizarstatus() {
-
-    }
-
     public int getCidadiaId() {
         return cidadaoId;
-    }
-
-    public void setCidadiaId(int cidadiaId) {
-        this.cidadaoId = cidadiaId;
-
     }
 
     @Override

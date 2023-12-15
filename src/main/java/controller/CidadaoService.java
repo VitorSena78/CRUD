@@ -3,10 +3,6 @@ package controller;
 import DAO.CidadaoDAO;
 import model.Cidadao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
 import java.util.List;
 
 public class CidadaoService {
@@ -27,7 +23,7 @@ public class CidadaoService {
             return false;
         }
     }
-    
+
     public boolean apagarUsuario(int id) {
         CidadaoDAO cidadaoDAO = new CidadaoDAO();
         return cidadaoDAO.remover(id);
