@@ -178,7 +178,7 @@ public class RegistroJanela extends JFrame {
                     int resposta = JOptionPane.showConfirmDialog(null, "Confirma o cadastro?", "Confirmação", JOptionPane.YES_NO_OPTION);
                     if (resposta == JOptionPane.YES_OPTION && cidadaoService.registraCidadao(cidadao)) {
                         dispose();
-                    }else {
+                    } else {
                         System.out.println("Erro no registro");
                     }
                 } catch (Mensagens erro) {

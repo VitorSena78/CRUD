@@ -2,7 +2,6 @@ package model;
 
 import controller.DenunciaService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Denuncia {
