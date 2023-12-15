@@ -1,11 +1,10 @@
 package controller;
 
 import DAO.DenunciaDAO;
-
-import java.util.List;
-
 import model.Cidadao;
 import model.Denuncia;
+
+import java.util.List;
 
 public class DenunciaService {
     Denuncia denuncia;

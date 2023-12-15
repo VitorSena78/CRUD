@@ -19,12 +19,12 @@ public class Conexao {
                 conn = DriverManager.getConnection(url, username, password);
                 System.out.println("Conexão estabelecida com sucesso!");
                 return conn;
-            }else {
+            } else {
                 System.out.println("Conexão estabelecida com sucesso!");
                 return conn;
             }
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Erro de conexão com o banco de dados: " + e.getMessage());
             return null;
         }

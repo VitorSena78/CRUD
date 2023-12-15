@@ -85,9 +85,7 @@ public class TelaDeLogin extends JFrame {
                 char[] password = passwordField.getPassword();
                 if (username.isEmpty() || password.length == 0) {
                     JOptionPane.showMessageDialog(rootPane, "Preencha todos os campos");
-                }
-                
-                else if (cidadaoService.consultaCidadao(username, String.valueOf(password))) {
+                } else if (cidadaoService.consultaCidadao(username, String.valueOf(password))) {
                     cidadao = cidadaoService.getCidadao();
                     JOptionPane.showMessageDialog(frame, "Login bem-sucedido!");
                     frame.dispose();
@@ -120,9 +118,9 @@ public class TelaDeLogin extends JFrame {
         govButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               frame.dispose();
-               FuncGoverno funcionario = new FuncGoverno();
-               funcionario.setVisible(true);
+                frame.dispose();
+                FuncGoverno funcionario = new FuncGoverno();
+                funcionario.setVisible(true);
             }
         });
 

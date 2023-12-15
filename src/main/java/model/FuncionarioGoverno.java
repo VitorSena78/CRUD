@@ -1,5 +1,4 @@
 package model;
-import DAO.FuncionarioGovernoDAO;
 
 public class FuncionarioGoverno extends Usuario {
     private String orgao;
